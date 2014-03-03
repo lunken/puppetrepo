@@ -5,7 +5,8 @@ class ntp {
   }
 
 file { '/etc/ntp.conf':
-  source    => 'puppet:///modules/ntp/ntp.conf',
+# source    => 'puppet:///modules/ntp//ntp.conf.erb',
+  content   => template ('ntp/ntp.conf.erb'),
   owner     => 'root',
   group     => 'root',
   mode      => '0644',
@@ -15,7 +16,8 @@ file { '/etc/ntp.conf':
 service { 'ntp':
   ensure    => running,
   enable    => true,
-  require   => Package['ntp'],
+  require   => [Package['ntp'],
+               File['/etc/ntp.conf']],
 
   hasstatus => false,
   status    => '/etc/init.d/ntp status|grep running',
