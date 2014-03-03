@@ -5,7 +5,6 @@ class ntp {
   }
 
 file { '/etc/ntp.conf':
-# source    => 'puppet:///modules/ntp//ntp.conf.erb',
   content   => template ('ntp/ntp.conf.erb'),
   owner     => 'root',
   group     => 'root',
