@@ -5,6 +5,7 @@ class sshd {
   }
 
 file { '/etc/ssh/sshd_config':
+  notify    => Service['ssh'],
   content   => template ('sshd/sshd_config.erb'),
   owner     => 'root',
   group     => 'root',
