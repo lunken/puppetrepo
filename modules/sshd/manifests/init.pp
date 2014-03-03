@@ -1,4 +1,4 @@
-# Install and Manage openssh-server
+# Install and Manage openssh-server for Ubuntu
 class sshd {
   package { 'openssh-server':
   ensure    => installed,
