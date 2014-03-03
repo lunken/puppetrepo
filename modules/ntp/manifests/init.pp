@@ -5,6 +5,7 @@ class ntp {
   }
 
 file { '/etc/ntp.conf':
+  notify    => Service['ntp'],
   content   => template ('ntp/ntp.conf.erb'),
   owner     => 'root',
   group     => 'root',
